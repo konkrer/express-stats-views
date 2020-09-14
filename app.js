@@ -32,10 +32,10 @@ app.get('/mode', (req, res, next) => {
 });
 
 // 404
-// app.use(function (req, res, next) {
-//   const notFoundError = new ExpressError('Not Found', 404);
-//   return next(notFoundError);
-// });
+app.use(function (req, res, next) {
+  const notFoundError = new ExpressError(404, 'Not Found');
+  return next(notFoundError);
+});
 // Error Handler gets triggered by next(val)
 app.use((err, req, res, next) => {
   const status = err.status || 500;
